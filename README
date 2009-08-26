@@ -15,7 +15,7 @@ include module GoogleTranslate (or use it as namespace, as required)
 translate:
 translator = Translator.new("en","fr") # so several translations can be performed with this new object
 result = translator.translate("nice day today") # returns "belle journée aujourd'hui"
-
+Note that the origin language can be left blank e.g., result = Translator.new("","fr"), in which case, google will try to detect the origin language by itself
 language detection:
 language = LanguageDetect.detect("il fait beau aujourd'hui") # returns "fr"
 

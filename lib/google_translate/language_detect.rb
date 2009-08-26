@@ -4,11 +4,15 @@ module GoogleTranslate
   #   language = LanguageDetect.detect("il fait beau aujourd'hui") # returns "fr"
   class LanguageDetect
     extend ApiCall
-    SERVICE = "detect?v=#{VERSION}&q="
+
+    SERVICE = "detect"
+    PARAMS = {"v" => "#{VERSION}"}
     
     # detect the language of a given text.
     def self.detect(text)
-      response = google_api_call(text,"#{SERVICE}",DetectResponse)   
+      PARAMS["q"] = CGI.escape(text)
+      #the "true" parameter indicates that HTTP GET should be used (POST is only for translation)
+      response = google_api_call(SERVICE,PARAMS,DetectResponse,true)
       raise UnreliableDetection if !response.is_reliable  
       response.language # return value
     end
