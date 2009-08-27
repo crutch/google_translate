@@ -25,7 +25,7 @@ module GoogleTranslate
       PARAMS["langpair"] = "#{@from}%7C#{@to}"
       PARAMS["q"] = CGI.escape(text)
       response = google_api_call(SERVICE, PARAMS, TranslationResponse)
-      translation = options[:html] ? response.translation : CGI.unescapeHTML(response.translation)
+      translation = options[:html].nil? ? response.translation : CGI.unescapeHTML(response.translation)
       translation # return value
     end
 
