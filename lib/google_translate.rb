@@ -15,6 +15,7 @@ module GoogleTranslate
   PATH ="/ajax/services/language/"
   VERSION = "1.0"
   #USERAGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.1) Gecko/20060111 Firefox/1.5.0.1'
+  GOOGLE_STRING_LIMIT = 5000
 
 end
 

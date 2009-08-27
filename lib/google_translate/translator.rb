@@ -23,7 +23,7 @@ module GoogleTranslate
     #           then this option needs to have a true value (:html => true)
     def translate(text,options = {})
       PARAMS["langpair"] = "#{@from}%7C#{@to}"
-      PARAMS["q"] = CGI.escape(text)
+      PARAMS["q"] = CGI.escape(text[0,GOOGLE_STRING_LIMIT])
       response = google_api_call(SERVICE, PARAMS, TranslationResponse)
       translation = options[:html].nil? ? response.translation : CGI.unescapeHTML(response.translation)
       translation # return value
